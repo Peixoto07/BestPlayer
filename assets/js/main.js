@@ -32,7 +32,7 @@ const criaLinha = (usuario, i) => {
     const novaLinha = document.createElement('tr')
     novaLinha.innerHTML = `
     <td onclick="SelecionaJogador(${i})" >${usuario.nome}</td>
-    <td class="btn_delet" onclick = "excluir(${i})" ><input type="image" src="/assets/imagens/btn_excluir.svg"></td>
+    <td class="btn_delet" onclick = "excluir(${i})" ><input type="image" src="assets/imagens/btn_excluir.svg"></td>
     `
     corpoTabela.appendChild(novaLinha)
 }
