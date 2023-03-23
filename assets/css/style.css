@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+:root{
+    --primaria: #444;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+main{
+    background-color: #ddd;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header {
+    height: 8vh;
+    background-color: var(--primaria);
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+    color: #fff;
+    box-shadow:  0px -2px 8px 1px rgb(0 0 0 / 55%);
+    z-index: 2;
+}
+
+section{
+    height: 80%;
+    width: 100%;
+    overflow-y: scroll;
+}
+table{
+    border-spacing: 1px;
+    -webkit-border-horizontal-spacing: inherit;
+}
+
+table td {
+    background-color: #fff;
+    width: 100%;
+    padding: 2.5vh 1vh;
+}
+table th{
+    text-align: start;
+    padding: 1vh;
+}
+
+
+footer{
+    height: 12vh;
+    width: 100%;
+    bottom: 0;
+    position: fixed;
+    background-color: var(--primaria);
+    font-size: 1rem;
+    color: #fff;
+    box-shadow: 0px -2px 8px -1px rgb(0 0 0 / 55%);
+    z-index: 2;
+}
+footer div{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    box-shadow: inset -4px -2px 10px 0px rgb(0 0 0 / 30%);
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.btn_edit{
+    background-color: #29c15c;
+    box-shadow: inset -4px -2px 10px 0px rgb(0 0 0 / 20%);
+}
+
+.btn_delet{
+    display: flex;
+    justify-content: center;
+}
+
+.modal_pontuação{
+    background-color: #444;
+    height: 57vh;
+    width: 95%;
+    transform: translate(-50%, -50%);
+    top: 45%;
+    left: 50%;
+    position: fixed;
+    z-index: 5;
+    border-radius: 24px;
+    box-shadow: 0px -2px 8px -1px rgb(0 0 0 / 55%);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 3vh 0vh;
+}
+
+
+#nome_usuario{
+    display: flex;
+    width: 25vh;
+    background: #555555;
+    height: 5vh;
+    color: #fff;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5vh;
+    text-align: center;
+}
+
+#conteudo{
+    margin: 2vh 0;
+    background: #555;
+    height: 35vh;
+    width: 100%;
+    display: flex;
+    padding: 1vh;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#btn_salvarEcancelar{
+    display: flex;
+    width: 90%;
+    height: 6vh;
+    justify-content: center;
+
+}
+
+#btn_salvar{
+    border: 0px;
+    width: 10vh;
+    padding: 5px;
+    outline: 0;
+    font-size: 83%;
+    background-color: #fff;
+    color: #29c15c;
+    border-radius: 3px;
+    font-weight: bold;
+    transition: all ease 0.3s;
+    
+}
+
+#btn_cancelar{
+    border: 0px;
+    width: 10vh;
+    padding: 5px;
+    outline: 0;
+    font-size: 71%;
+    background-color: #fff;
+    color: #f44336;
+    margin-left: 5vh;
+    border-radius: 3px;
+    font-weight: bold;
+    transition: all ease 0.3s;
+}
+
+
+
+.pontuacao{
+    text-align: center;
+    display: flex;
+    margin: 10vh;
+    flex-direction: column;
+}
+
+
+#btn_menos{
+    border-radius: 10px 0 0 10px;
+    width: 6vh;
+    height: 4vh;
+    background-color: #fff;
+    border: none;
+    color: #F44336;
+    font-size: larger;
+}
+
+#btn_mais{
+    border-radius: 0 10px 10px 0;
+    width: 6vh;
+    height: 4vh;
+    color: #4CAF50;
+    font-size: larger;
+    border: none;
+    background-color: #fff;
+}
+
+.pontos{
+    text-align: center;
+    height: 4vh;
+    width: 8vh;
+    /* border: solid 1px #e3cc00; */
+    font-size: larger;
+}
+.linha_pts{
+    padding: 0.8vh 0;
+}
+.linha_pts h4{
+    color: #fff;
+    font-size: small;
+}
+
+.modal_cadastro{
+    background-color: #444;
+    height: 23vh;
+    width: 41vh;
+    transform: translate(-50%, -50%);
+    top: 45%;
+    left: 50%;
+    position: fixed;
+    z-index: 5;
+    border-radius: 20px;
+    box-shadow: 0px -2px 8px -1px rgb(0 0 0 / 55%);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 3vh 0vh;
+    justify-content: space-around;
+}
+
+.info_usuario{
+    display: flex;
+    flex-direction: column;
+    height: 7vh;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#nome_usuario{
+    height: 5vh;
+    border: solid 2px #f9c510;
+    font-size: 2.5vh;
+    text-align: center;
+    width: 25vh;
+}
+.fechar_janela{
+    width: 90%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.display_off{
+  display: none;
+}
+
+.texto_dinamico{
+    display: flex;
+    justify-content: center;
+    height: 5vh;
+    align-items: center;
+    padding: 3vh 1vh;
+}
