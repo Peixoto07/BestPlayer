@@ -15,6 +15,7 @@ const btn = document.getElementsByClassName("btAtualizar")
 
 
 
+
 const arrayUsuarios = []
 
 const getLocalStorage = () => JSON.parse(localStorage.getItem('db_usuarios')) ?? []
@@ -62,7 +63,13 @@ const criaDiv = (i)=>{
 }
 
 
+const  btnAumentar = (metodo)=>{
+    metodo.stepUp()
+}
 
+const  btnDiminuir = (metodo)=>{
+    metodo.stepDown()
+}
 
 
 const SelecionaJogador = (index)=>{
