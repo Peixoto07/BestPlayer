@@ -20,16 +20,15 @@
                 <input id="nome_usuario" type="text">
             </div>
             
-            <div id="btn_salvarEcancelar">
+            <div class="btn_salvarEcancelar">
                 <button onclick="salvar()" id="btn_salvar">SALVAR</button>
                 <button onclick="fecharCard(divCadastro)" id="btn_cancelar">CANCELAR</button>
             </div>
         </div>
 
         <div class="modal_pontuação display_off">
-            <span id="nome_usuario">
-                nome
-            </span>
+            <input id="nome_pontuacao">
+            </input>
 
             <span id="conteudo">
                 <div class="pontuacao">
@@ -40,34 +39,34 @@
                         <button id="btn_mais">+</button>
                     </div>
 
-                    <div id="assist" class="linha_pts">
+                    <div class="linha_pts">
                         <h4>ASSIST</h4>
                         <button id="btn_menos">-</button>
-                        <input type="number" class="pontos">
+                        <input id="assist" type="number" class="pontos">
                         <button id="btn_mais">+</button>
                     </div>
 
-                    <div id="desarme" class="linha_pts">
+                    <div class="linha_pts">
                         <h4>DESARME</h4>
                         <button id="btn_menos">-</button>
-                        <input type="number" class="pontos">
+                        <input id="desarme" type="number" class="pontos">
                         <button id="btn_mais">+</button>
                     </div>
 
-                    <div id="defesa" class="linha_pts">
+                    <div class="linha_pts">
                         <h4>DEFESA</h4>
                         <button id="btn_menos">-</button>
-                        <input type="number" class="pontos">
+                        <input id="defesa" type="number" class="pontos">
                         <button id="btn_mais">+</button>
                     </div>
 
                 </div>
             </span>
             
-            <span id="btn_salvarEcancelar">
-                <button id="btn_salvar" onclick="salvar()">SALVAR</button>
+            <!-- <span id="btn_salvarEcancelar">
+                <button id="btn_salvar" onclick="teste()">SALVAR</button>
                 <button id="btn_cancelar" onclick="fecharCard(divPontuação)">CANCELAR</button>
-            </span>
+            </span> -->
         </div>
 
         <header class="center">

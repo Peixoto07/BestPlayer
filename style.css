@@ -108,8 +108,8 @@ footer div{
     padding: 3vh 0vh;
 }
 
-
-#nome_usuario{
+ 
+#nome_pontuacao, #nome_usuario{
     display: flex;
     width: 25vh;
     background: #555555;
@@ -120,6 +120,7 @@ footer div{
     justify-content: center;
     font-size: 2.5vh;
     text-align: center;
+    border: solid 2px #f9c510;
 }
 
 #conteudo{
@@ -134,7 +135,7 @@ footer div{
     flex-direction: column;
 }
 
-#btn_salvarEcancelar{
+.btAtualizar , .btn_salvarEcancelar{
     display: flex;
     width: 90%;
     height: 6vh;
@@ -242,13 +243,6 @@ footer div{
     justify-content: space-around;
 }
 
-#nome_usuario{
-    height: 5vh;
-    border: solid 2px #f9c510;
-    font-size: 2.5vh;
-    text-align: center;
-    width: 25vh;
-}
 .fechar_janela{
     width: 90%;
     display: flex;
