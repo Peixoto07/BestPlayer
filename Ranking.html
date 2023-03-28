@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BestPlayer</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+
+</head>
+
+<body>
+    <main>
+
+        <header class="center">
+            <h2>RANKING</h2>
+        </header>
+
+        <section>
+            <span class="texto_dinamico">
+                <h3 id="texto"></h3>
+            </span>
+
+            <table>
+                <tbody>
+                   
+                </tbody>
+            </table>
+        </section>
+
+
+        <footer >
+            <div id="pontuacao">
+                <ion-icon name="clipboard-outline"></ion-icon>
+                <div>Pontuação</div>
+            </div>
+            <div onclick="trocaPagina('index.html')" id="cadastrar">
+                <ion-icon name="add-circle-outline"></ion-icon>
+                <div>Cadastrar</div>
+            </div>
+            <div  id="ranking">
+                <ion-icon name="ribbon"></ion-icon>
+                <div style="font-weight: 500">Ranking</div>
+            </div>
+        </footer>
+    </main>
+    
+</body>
+<script src="assets/js/main.js" ></script>
+
+</html>

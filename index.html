@@ -33,30 +33,39 @@
                 <div class="pontuacao">
                     <div class="linha_pts">
                         <h4>GOL</h4>
-                        <button onclick="btnDiminuir(gol)" id="btn_menos">-</button>
-                        <input id="gol" type="number" class="pontos">
-                        <button onclick="btnAumentar(gol)" id="btn_mais">+</button>
+                            <div>
+                                <button onclick="btnDiminuir(gol)" id="btn_menos">-</button>
+                                <input id="gol" type="number" class="pontos">
+                                <button onclick="btnAumentar(gol)" id="btn_mais">+</button>                                
+                            </div>
                     </div>
 
                     <div class="linha_pts">
                         <h4>ASSIST</h4>
-                        <button onclick="btnDiminuir(assist)" id="btn_menos">-</button>
-                        <input id="assist" type="number" class="pontos">
-                        <button onclick="btnAumentar(assist)" id="btn_mais">+</button>
+                        <div>
+                            <button onclick="btnDiminuir(assist)" id="btn_menos">-</button>
+                            <input id="assist" type="number" class="pontos">
+                            <button onclick="btnAumentar(assist)" id="btn_mais">+</button>
+
+                        </div>
                     </div>
 
                     <div class="linha_pts">
                         <h4>DESARME</h4>
-                        <button onclick="btnDiminuir(desarme)" id="btn_menos">-</button>
-                        <input id="desarme" type="number" class="pontos">
-                        <button onclick="btnAumentar(desarme)" id="btn_mais">+</button>
+                        <div>
+                            <button onclick="btnDiminuir(desarme)" id="btn_menos">-</button>
+                            <input id="desarme" type="number" class="pontos">
+                            <button onclick="btnAumentar(desarme)" id="btn_mais">+</button>
+                        </div>
                     </div>
 
                     <div class="linha_pts">
                         <h4>DEFESA</h4>
-                        <button onclick="btnDiminuir(defesa)"  id="btn_menos">-</button>
-                        <input id="defesa" type="number" class="pontos">
-                        <button onclick="btnAumentar(defesa)" id="btn_mais">+</button>
+                        <div>
+                            <button onclick="btnDiminuir(defesa)"  id="btn_menos">-</button>
+                            <input id="defesa" type="number" class="pontos">
+                            <button onclick="btnAumentar(defesa)" id="btn_mais">+</button>
+                        </div>
                     </div>
 
                 </div>
@@ -68,7 +77,7 @@
             <h2>BESTPLAYER</h2>
         </header>
 
-        <section>
+        <section id="conteudo_principal" >
             <span class="texto_dinamico">
                 <h3 id="texto"></h3>
             </span>
@@ -90,7 +99,7 @@
                 <ion-icon name="add-circle-outline"></ion-icon>
                 <div>Cadastrar</div>
             </div>
-            <div id="ranking">
+            <div onclick="trocaPagina('Ranking.html')" id="ranking">
                 <ion-icon name="ribbon-outline"></ion-icon>
                 <div>Ranking</div>
             </div>

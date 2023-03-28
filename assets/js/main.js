@@ -16,6 +16,7 @@ const btn = document.getElementsByClassName("btAtualizar")
 
 
 
+
 const arrayUsuarios = []
 
 const getLocalStorage = () => JSON.parse(localStorage.getItem('db_usuarios')) ?? []
@@ -41,54 +42,86 @@ const abreCard = (div) => {
 
 const criaLinha = (usuario, i) => {
 
-    const novaLinha = document.createElement('tr')
+    const novaLinha = document.createElement('div')
+    novaLinha.setAttribute("id","linhaJogador")
     novaLinha.innerHTML = `
-    <td onclick="SelecionaJogador(${i})")>${usuario.nome}</td>
-    <td class="btn_delet" onclick = "excluir(${i})" ><input type="image" src="assets/imagens/btn_excluir.svg"></td>
+    <div id="divNomePontuacao" >${usuario.nome}</div>
+    <div id="btnPontuacao" onclick="SelecionaJogador(${i})") ><ion-icon name="football"></ion-icon></div>
+   
+    <ion-icon class="btn_delet" onclick="excluir(${i})" name="close-circle"></ion-icon>  
     `
+
     corpoTabela.appendChild(novaLinha)
 }
 
-const criaDiv = (i)=>{
-    const divButton = document.createElement("span")
-        
-        divButton.classList.add("btAtualizar")
-
-        divButton.setAttribute("id","pegou")
-        divButton.innerHTML = `
-        <button id="btn_salvar" onclick="teste(${i})">SALVAR</button>
-        <button id="btn_cancelar" onclick="fecharCard(divPontuação)">CANCELAR</button>
-        ` 
-        divPontuação[0].appendChild(divButton)
+const somaNumeros = (obj) => {
+    let soma = 0
+    for (let el in obj) {
+        if (!isNaN(obj[el])) {
+            soma += obj[el]
+        }
+    }
+    return soma
 }
 
-
-const  btnAumentar = (metodo)=>{
-    metodo.stepUp()
-}
-
-const  btnDiminuir = (metodo)=>{
-    metodo.stepDown()
-}
-
-
-const SelecionaJogador = (index)=>{
+const somaPontuacao = (index) => {
     const usuarioDb = getLocalStorage()
 
     usuarioDb.forEach(
-        (el, i)=>{
-            if(index == i){
+        (el, i) => {
+
+            if (index == i) {
+                
+               el.total = somaNumeros(el)
+            }
+        }
+    )
+     setLocalStorage(usuarioDb)
+}
+
+const criaDiv = (i) => {
+    const divButton = document.createElement("span")
+
+    divButton.classList.add("btAtualizar")
+
+    divButton.setAttribute("id", "pegou")
+    divButton.innerHTML = `
+        <button id="btn_salvar" onclick="teste(${i})">SALVAR</button>
+        <button id="btn_cancelar" onclick="fecharCard(divPontuação)">CANCELAR</button>
+        `
+    divPontuação[0].appendChild(divButton)
+}
+
+
+const btnAumentar = (metodo) => {
+    metodo.stepUp()
+}
+
+const btnDiminuir = (metodo) => {
+    metodo.stepDown()
+}
+
+const trocaPagina = (url) => {
+    window.location.href = url
+}
+
+const SelecionaJogador = (index) => {
+    const usuarioDb = getLocalStorage()
+
+    usuarioDb.forEach(
+        (el, i) => {
+            if (index == i) {
                 abreCard(divPontuação)
                 nomePontuacao.value = el.nome
                 gol.value = el.gol
                 assist.value = el.assist
                 desarme.value = el.desarme
                 defesa.value = el.defesa
-                
-                if (btn[0]!=undefined) {
+
+                if (btn[0] != undefined) {
                     btn[0].remove()
                     criaDiv(i)
-                }else{
+                } else {
                     criaDiv(i)
                 }
 
@@ -99,14 +132,15 @@ const SelecionaJogador = (index)=>{
 
 
 
-const teste = (e)=>{
+const teste = (e) => {
     const usuarioDb = getLocalStorage()
-    
+
     usuarioDb.forEach(
-        (el, i)=>{
-            if(e == i){
+        (el, i) => {
+            if (e == i) {
                 usuarioDb[i] = dadosUsuario(nomePontuacao)
                 setLocalStorage(usuarioDb)
+                somaPontuacao(i)
                 atualizaTabela()
             }
         }
@@ -121,7 +155,7 @@ const excluir = (e) => {
             if (e == i) {
                 usuarioDb.splice(i, 1)
                 setLocalStorage(usuarioDb)
-                corpoTabela.deleteRow(i)
+                corpoTabela.childNodes[i].remove()
             }
         }
     )
@@ -129,19 +163,19 @@ const excluir = (e) => {
 }
 
 
-const dadosUsuario = (nomeDaClass)=>{
+const dadosUsuario = (nomeDaClass) => {
     const usuario = {}
     usuario.nome = nomeDaClass.value
-    usuario.gol = gol.value
-    usuario.assist = assist.value
-    usuario.desarme = desarme.value 
-    usuario.defesa = defesa.value
-    
+    usuario.gol = Number(gol.value)
+    usuario.assist = Number(assist.value)
+    usuario.desarme = Number(desarme.value)
+    usuario.defesa = Number(defesa.value)
+    usuario.total = ""
     return usuario
 }
 
 function salvar() {
-   const usuario = dadosUsuario(nomeCadastro)
+    const usuario = dadosUsuario(nomeCadastro)
 
     if (usuario.nome != '') {
         registraUsuario(usuario)
@@ -164,9 +198,9 @@ const atualizaTabela = () => {
     textoDinamico()
 }
 
-const textoDinamico = ()=>{
+const textoDinamico = () => {
     const usuarioDb = getLocalStorage()
-    if (usuarioDb.length==0) {
+    if (usuarioDb.length == 0) {
         textoJogador.innerText = "CADASTRE UM JOGADOR"
     } else {
         textoJogador.innerText = `Jogadores cadastrados  (${usuarioDb.length})`
