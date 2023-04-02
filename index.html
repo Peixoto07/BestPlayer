@@ -18,7 +18,7 @@
             <div class="info_usuario">
                 <input id="nome_usuario" type="text">
             </div>
-            
+
             <div class="btn_salvarEcancelar">
                 <button onclick="salvar()" id="btn_salvar">SALVAR</button>
                 <button onclick="fecharCard(divCadastro)" id="btn_cancelar">CANCELAR</button>
@@ -33,11 +33,11 @@
                 <div class="pontuacao">
                     <div class="linha_pts">
                         <h4>GOL</h4>
-                            <div>
-                                <button onclick="btnDiminuir(gol)" id="btn_menos">-</button>
-                                <input id="gol" type="number" class="pontos">
-                                <button onclick="btnAumentar(gol)" id="btn_mais">+</button>                                
-                            </div>
+                        <div>
+                            <button onclick="btnDiminuir(gol)" id="btn_menos">-</button>
+                            <input id="gol" type="number" class="pontos">
+                            <button onclick="btnAumentar(gol)" id="btn_mais">+</button>
+                        </div>
                     </div>
 
                     <div class="linha_pts">
@@ -62,7 +62,7 @@
                     <div class="linha_pts">
                         <h4>DEFESA</h4>
                         <div>
-                            <button onclick="btnDiminuir(defesa)"  id="btn_menos">-</button>
+                            <button onclick="btnDiminuir(defesa)" id="btn_menos">-</button>
                             <input id="defesa" type="number" class="pontos">
                             <button onclick="btnAumentar(defesa)" id="btn_mais">+</button>
                         </div>
@@ -70,43 +70,100 @@
 
                 </div>
             </span>
-            
-        </div>
 
+        </div>
+        
         <header class="center">
             <h2>BESTPLAYER</h2>
         </header>
-
-        <section id="conteudo_principal" >
-            <span class="texto_dinamico">
+        <div id="alerta" >mensagem</div>
+        
+        <section id="conteudo_principal">
+            <span id="texto_dinamico">
                 <h3 id="texto"></h3>
+                <div onclick="abreCard(divCadastro),trocaPagina(pagCadastro,pagRanking)" id="cadastrar">
+                    <ion-icon name="person-add-outline"></ion-icon>
+                </div>
             </span>
+            
+                <table>
+                    <tbody id="corpoTabela">
 
-            <table>
-                <tbody id="corpoTabela">
-                   
-                </tbody>
-            </table>
-        </section>
+                    </tbody>
+                </table>
+    
+            </section>
+            
+            <section id="conteudo_ranking" style="display: none;">
+                <span id="texto_ranking">
+                    <h3 id="texto">MELHOR DA PARTIDA</h3>
+                </span>
+
+                <div id="podio">
+                    <div class="card_podio" id="primeiro_colocado">
+                        <img src="assets/imagens/trofeu-ouro.svg" alt="">
+                        <div class="info_podio">
+                            <span>Melhor da partida</span>
+                            <div id="nome_primeiro_colocado">Jogador</div>
+                            <div id="pontos_primeiro_colocado">25</div>
+                            <span>Pontos</span>
+                        </div>
+                    </div>
+
+                    <span id="titulo_podio">
+                        <div>2º LUGAR</div>
+                        <div>3º LUGAR</div>
+                    </span>
+                    
+                    <div id="segundoEterceiro_colocado">
+                        <div id="segundo_colocado" class="card_podio_segEterc">
+                            <img src="assets/imagens/trofeu-prata.svg" alt="">
+                            <div class="info_podio_segEterc">
+                                <div id="nome_segundo_colocado" class="nome_podio_segEterc">Jogador</div>
+                                <div id="pontos_segundo_colocado" class="pontos_podio_segEterc">15</div>
+                                <span>Pontos</span>
+                            </div>
+                        </div>
+                        <div id="terceiro_colocado" class="card_podio_segEterc">
+                            <img src="assets/imagens/trofeu-bronze.svg" alt="">
+                            <div class="info_podio_segEterc">
+                                <div id="nome_terceiro_colocado" class="nome_podio_segEterc">Jogador</div>
+                                <div id="pontos_terceiro_colocado" class="pontos_podio_segEterc">8</div>
+                                <span>Pontos</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table>
+                        <tbody id="corpoTabela">
+                            
+                        </tbody>
+                    </table>                  
+                
+                </section>
+        
 
 
-        <footer >
-            <div id="pontuacao">
+
+
+
+        <footer>
+            <div class="btn_footer" id="pontuacao">
                 <ion-icon name="clipboard-outline"></ion-icon>
                 <div>Pontuação</div>
             </div>
-            <div onclick="abreCard(divCadastro)" id="cadastrar">
-                <ion-icon name="add-circle-outline"></ion-icon>
-                <div>Cadastrar</div>
+            <div class="btn_footer" onclick="abreCard(divCadastro),trocaPagina(pagCadastro,pagRanking)" id="cadastro">
+                <ion-icon name="person-add-outline"></ion-icon>
+                <div>Cadastro</div>
             </div>
-            <div onclick="trocaPagina('Ranking.html')" id="ranking">
+            <div class="btn_footer" id="ranking" onclick="ranking()">
                 <ion-icon name="ribbon-outline"></ion-icon>
                 <div>Ranking</div>
             </div>
         </footer>
     </main>
-    
+
 </body>
-<script src="assets/js/main.js" ></script>
+<script src="assets/js/main.js"></script>
 
 </html>

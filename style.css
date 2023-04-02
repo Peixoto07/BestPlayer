@@ -2,6 +2,9 @@
 
 :root{
     --primaria: #444;
+    --gradienteOuro:linear-gradient(0deg, rgba(255,255,255,1) 38%, rgb(255 222 68) 28%);
+    --gradienteBronze:linear-gradient(0deg, rgba(255,255,255,1) 55%, rgb(255 170 126) 28%);
+    --gradientePrata:linear-gradient(0deg, rgba(255,255,255,1) 55%, rgb(228 228 228) 28%);
 }
 
 *{
@@ -39,7 +42,7 @@ header {
 }
 
 section{
-    height: 80%;
+    height: 83%;
     width: 100%;
     display: flex;
     overflow-y: scroll;
@@ -49,13 +52,15 @@ section{
 table{
     width: 100%;
     max-width: 700px;
+    top: 15%;
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 footer{
-    height: 10vh;
+    height: 8vh;
     width: 100%;
     bottom: 0;
     position: fixed;
@@ -68,7 +73,15 @@ footer{
     align-items: center;
     justify-content: space-around;
     text-align: center;
-   
+}
+
+.btn_footer{
+    display: flex;
+    flex-direction: column;
+    width: 10vh;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -267,12 +280,25 @@ footer{
   display: none;
 }
 
-.texto_dinamico{
+#texto_dinamico{
     display: flex;
     justify-content: center;
-    height: 5vh;
+    width: 95%;
+    max-width: 670px;
+    z-index: 1;
+    background: #dddddd;
+    position: fixed;
     align-items: center;
-    padding: 3vh 1vh;
+    padding: 1vh 0;
+    flex-direction: column;
+}
+
+#texto_ranking{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1vh 0;
+    flex-direction: column;
 }
 ion-icon {
     font-size: 4vh;
@@ -281,16 +307,186 @@ ion-icon {
 #linhaJogador{
     background: white;
     width: 100%;
-    height: 8vh;
+    height: 7vh;
     display: flex;
     border-radius: 5px;
     padding: 0 1vh;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0px 0px 4px -1px rgb(0 0 0/30%);
-    margin: 1vh 0;
+    margin: .5vh 0;
 }
 
 #corpoTabela{
    width: 95%;
 }
+
+#podio{
+    height: 100%;
+    width: 90%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card_podio{
+    display: flex;
+    padding: 1vh;
+    border-radius: 20px;
+    box-shadow: 0px 0px 4px -1px rgb(0 0 0/30%);
+    align-items: center;
+    justify-content: center;
+}
+#primeiro_colocado{
+    background: var(--gradienteOuro);
+    height: 24vh;
+    width: 100%;
+}
+
+.card_podio img{
+    width: 43%;
+    height: 100%;
+}
+
+.info_podio{
+    display: flex;
+    width: 40%;
+    height: 90%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.info_podio span {
+    color: #888;
+    font-size: .7em;
+    font-weight: 500;
+    margin-top: -5px;
+    height: 1vh;
+}
+
+#nome_primeiro_colocado{
+    font-weight: bold;
+    font-size: 2.1EM;
+    padding-bottom: 1vh;
+    color: #555;
+}
+
+#pontos_primeiro_colocado{
+    font-weight: bold;
+    font-size: 2.8em;
+    color: #f9ba29;
+}
+
+#segundoEterceiro_colocado{
+    display: flex;
+    margin-top: 0vh;
+    width: 100%;
+    height: 18%;
+    justify-content: space-between;
+}
+
+.card_podio_segEterc{
+    width: 48%;
+    height: 84%;
+    display: flex;
+    padding: 1vh;
+    border-radius: 10px;
+    box-shadow: 0px 0px 4px -1px rgb(0 0 0/30%);
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.info_podio_segEterc{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    align-items: center;
+}
+
+.info_podio_segEterc span{
+    font-size: 0.7em;
+    margin-top: -4px;
+}
+
+
+.nome_podio_segEterc{
+    font-size: 1.2em;
+    font-weight: 500;
+    margin-bottom: 4px;
+    color: var(--primaria);
+
+}
+
+.pontos_podio_segEterc{
+    font-weight: 500;
+    font-size: 1.9em;
+}
+#numero_prata{
+color: #888;
+}
+#segundo_colocado{
+    background: var(--gradientePrata);
+}
+
+#numero_bronze{
+color: #b66844;
+}
+
+#terceiro_colocado{
+        background: var(--gradienteBronze);
+}
+
+#titulo_podio{
+    
+    display: flex;
+    width: 100%;
+    text-align: center;
+    margin-top: 2vh;
+    justify-content: space-between;
+}
+
+#titulo_podio div{
+    
+    width: 48%;
+    font-weight: bold;
+}
+
+#alerta {
+    background-color: #3fd075;
+    color: #fff;
+    position: fixed;
+    width: 80%;
+    display: none;
+    height: 6%;
+    top: 11%;
+    z-index: 5;
+    left: 50%;
+    border-radius: 5px;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    border: 2px solid #959595;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  #alerta.mostrar{
+    opacity: 1;
+  }
+
+  #cadastrar{
+    display: flex;
+    width: 100%;
+    color: #fff;
+    background: #60d965;
+    height: 7vh;
+    margin-top: 1vh;
+    align-items: center;
+    border-radius: 10px;
+    justify-content: center;
+    box-shadow: 2px 4px 4px -1px rgb(0 0 0/30%);
+  }

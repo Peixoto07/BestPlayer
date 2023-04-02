@@ -12,12 +12,52 @@ const assist = document.getElementById('assist')
 const desarme = document.getElementById('desarme')
 const defesa = document.getElementById('defesa')
 const btn = document.getElementsByClassName("btAtualizar")
+const pagCadastro = document.getElementById("conteudo_principal")
+const pagRanking = document.getElementById("conteudo_ranking")
+
+const nomePrimeiroColocado = document.getElementById("nome_primeiro_colocado")
+const pontosPrimeiroColocado = document.getElementById("pontos_primeiro_colocado")
+const nomeSegundoColocado = document.getElementById("nome_segundo_colocado")
+const pontosSegundoColocado = document.getElementById("pontos_segundo_colocado")
+const nomeTerceiroColocado = document.getElementById("nome_terceiro_colocado")
+const pontosTerceiroColocado = document.getElementById("pontos_terceiro_colocado")
+const alerta = document.getElementById("alerta")
 
 
+const ranking = ()=>{
+    const jogadoresOrdenados = getLocalStorage().sort((a, b) => b.total - a.total)
+    const totalMaiorQueZero = jogadoresOrdenados.slice(0,3).every(jogador =>jogador.total>0)
+    console.log(totalMaiorQueZero);
+   if (jogadoresOrdenados.length>= 3 && totalMaiorQueZero) {
+       nomePrimeiroColocado.innerText=jogadoresOrdenados[0].nome
+       pontosPrimeiroColocado.innerText = jogadoresOrdenados[0].total
+       
+       nomeSegundoColocado.innerText=jogadoresOrdenados[1].nome
+       pontosSegundoColocado.innerText = jogadoresOrdenados[1].total
+       
+       nomeTerceiroColocado.innerText=jogadoresOrdenados[2].nome
+       pontosTerceiroColocado.innerText = jogadoresOrdenados[2].total
+
+       trocaPagina(pagRanking,pagCadastro)
+   }else{
+    abreAlerta(`JOGOU AONDE?
+    Pontue com no minimo 3 jogadores`,"#e65555")
+   }
+}
+
+const abreAlerta = (mensagem,cor)=>{
+     
+    alerta.innerText = mensagem
+    alerta.classList.add('mostrar')
+    alerta.style.backgroundColor= cor
+    alerta.style.display="flex"
+    setTimeout(()=> {
+        alerta.classList.remove('mostrar')
+      }, 3000)
+
+}
 
 
-
-const arrayUsuarios = []
 
 const getLocalStorage = () => JSON.parse(localStorage.getItem('db_usuarios')) ?? []
 const setLocalStorage = (usuariosdb) => localStorage.setItem('db_usuarios', JSON.stringify(usuariosdb))
@@ -38,6 +78,7 @@ const fecharCard = (div) => {
 }
 const abreCard = (div) => {
     div[0].classList.remove("display_off")
+   
 }
 
 const criaLinha = (usuario, i) => {
@@ -54,25 +95,23 @@ const criaLinha = (usuario, i) => {
     corpoTabela.appendChild(novaLinha)
 }
 
-const somaNumeros = (obj) => {
-    let soma = 0
-    for (let el in obj) {
-        if (!isNaN(obj[el])) {
-            soma += obj[el]
-        }
-    }
-    return soma
-}
 
 const somaPontuacao = (index) => {
     const usuarioDb = getLocalStorage()
+    const valorPontos = {
+        gol:8,
+        assist:5,
+        desarme:2,
+        defesa:4
+    }
 
     usuarioDb.forEach(
         (el, i) => {
 
             if (index == i) {
                 
-               el.total = somaNumeros(el)
+               el.total = el.gol*valorPontos.gol+el.assist* valorPontos.assist+el.desarme*valorPontos.desarme+el.defesa*valorPontos.defesa
+
             }
         }
     )
@@ -86,7 +125,7 @@ const criaDiv = (i) => {
 
     divButton.setAttribute("id", "pegou")
     divButton.innerHTML = `
-        <button id="btn_salvar" onclick="teste(${i})">SALVAR</button>
+        <button id="btn_salvar" onclick="atualizaJogador(${i})">SALVAR</button>
         <button id="btn_cancelar" onclick="fecharCard(divPontuação)">CANCELAR</button>
         `
     divPontuação[0].appendChild(divButton)
@@ -101,8 +140,9 @@ const btnDiminuir = (metodo) => {
     metodo.stepDown()
 }
 
-const trocaPagina = (url) => {
-    window.location.href = url
+const trocaPagina = (paginaAtual,...pagOff) => {
+    paginaAtual.style.display = "flex"
+    pagOff.forEach((el)=>{el.style.display ="none"})
 }
 
 const SelecionaJogador = (index) => {
@@ -132,7 +172,7 @@ const SelecionaJogador = (index) => {
 
 
 
-const teste = (e) => {
+const atualizaJogador = (e) => {
     const usuarioDb = getLocalStorage()
 
     usuarioDb.forEach(
@@ -145,6 +185,7 @@ const teste = (e) => {
             }
         }
     )
+    abreAlerta("Jogador Atualizado","#3fd075")
 }
 
 const excluir = (e) => {
@@ -159,6 +200,7 @@ const excluir = (e) => {
             }
         }
     )
+    abreAlerta("Jogador Excluido","#e65555")
     atualizaTabela()
 }
 
@@ -181,6 +223,7 @@ function salvar() {
         registraUsuario(usuario)
         atualizaTabela()
         nomeCadastro.value = ""
+        abreAlerta("Jogador Salvo","#3fd075")
     }
 
 }
