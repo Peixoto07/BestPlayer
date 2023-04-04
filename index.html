@@ -76,12 +76,12 @@
         <header class="center">
             <h2>BESTPLAYER</h2>
         </header>
-        <div id="alerta" >mensagem</div>
+        <div id="alerta" ></div>
         
         <section id="conteudo_principal">
             <span id="texto_dinamico">
                 <h3 id="texto"></h3>
-                <div onclick="abreCard(divCadastro),trocaPagina(pagCadastro,pagRanking)" id="cadastrar">
+                <div onclick="abreCard(divCadastro)" id="cadastrar">
                     <ion-icon name="person-add-outline"></ion-icon>
                 </div>
             </span>
@@ -135,7 +135,7 @@
                     </div>
 
                     <table>
-                        <tbody id="corpoTabela">
+                        <tbody id="corpoTabelaRanking">
                             
                         </tbody>
                     </table>                  
@@ -152,7 +152,7 @@
                 <ion-icon name="clipboard-outline"></ion-icon>
                 <div>Pontuação</div>
             </div>
-            <div class="btn_footer" onclick="abreCard(divCadastro),trocaPagina(pagCadastro,pagRanking)" id="cadastro">
+            <div class="btn_footer" onclick="trocaPagina(pagCadastro,pagRanking)" id="cadastro">
                 <ion-icon name="person-add-outline"></ion-icon>
                 <div>Cadastro</div>
             </div>

@@ -183,13 +183,13 @@ footer{
     flex-direction: column;
 }
 
-#btnPontuacao{
+.btnPontuacao{
     height: 100%;
     display: flex;
     align-items: center;
     border-radius: 5px;
     width: 8vh;
-    color: #3fd075;
+    color: #a1a1a1;
     justify-content: center;
 }
 
@@ -283,8 +283,10 @@ footer{
 #texto_dinamico{
     display: flex;
     justify-content: center;
-    width: 95%;
+    width: 100%;
     max-width: 670px;
+    height: 14vh;
+    bottom: 79%;
     z-index: 1;
     background: #dddddd;
     position: fixed;
@@ -424,19 +426,15 @@ ion-icon {
     font-weight: 500;
     font-size: 1.9em;
 }
-#numero_prata{
-color: #888;
-}
+
 #segundo_colocado{
     background: var(--gradientePrata);
-}
-
-#numero_bronze{
-color: #b66844;
+    color: #888;
 }
 
 #terceiro_colocado{
         background: var(--gradienteBronze);
+        color: #b66844;
 }
 
 #titulo_podio{
@@ -480,7 +478,7 @@ color: #b66844;
 
   #cadastrar{
     display: flex;
-    width: 100%;
+    width: 95%;
     color: #fff;
     background: #60d965;
     height: 7vh;

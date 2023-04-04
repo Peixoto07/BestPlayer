@@ -5,6 +5,7 @@ const divPontuação = document.getElementsByClassName("modal_pontuação")
 const corpoTabela = document.getElementById('corpoTabela')
 const nomeCadastro = document.getElementById("nome_usuario")
 const nomePontuacao = document.getElementById("nome_pontuacao")
+const btnPontuacao = document.getElementsByClassName("btnPontuacao")
 const quantJogador = document.getElementById("valor")
 const textoJogador = document.getElementById("texto")
 const gol = document.getElementById('gol')
@@ -27,7 +28,6 @@ const alerta = document.getElementById("alerta")
 const ranking = ()=>{
     const jogadoresOrdenados = getLocalStorage().sort((a, b) => b.total - a.total)
     const totalMaiorQueZero = jogadoresOrdenados.slice(0,3).every(jogador =>jogador.total>0)
-    console.log(totalMaiorQueZero);
    if (jogadoresOrdenados.length>= 3 && totalMaiorQueZero) {
        nomePrimeiroColocado.innerText=jogadoresOrdenados[0].nome
        pontosPrimeiroColocado.innerText = jogadoresOrdenados[0].total
@@ -41,7 +41,7 @@ const ranking = ()=>{
        trocaPagina(pagRanking,pagCadastro)
    }else{
     abreAlerta(`JOGOU AONDE?
-    Pontue com no minimo 3 jogadores`,"#e65555")
+    Pontue com no mínimo 3 jogadores`,"#e65555")
    }
 }
 
@@ -87,7 +87,7 @@ const criaLinha = (usuario, i) => {
     novaLinha.setAttribute("id","linhaJogador")
     novaLinha.innerHTML = `
     <div id="divNomePontuacao" >${usuario.nome}</div>
-    <div id="btnPontuacao" onclick="SelecionaJogador(${i})") ><ion-icon name="football"></ion-icon></div>
+    <div class="btnPontuacao" onclick="SelecionaJogador(${i})") ><ion-icon name="football"></ion-icon></div>
    
     <ion-icon class="btn_delet" onclick="excluir(${i})" name="close-circle"></ion-icon>  
     `
@@ -178,7 +178,7 @@ const atualizaJogador = (e) => {
     usuarioDb.forEach(
         (el, i) => {
             if (e == i) {
-                usuarioDb[i] = dadosUsuario(nomePontuacao)
+                usuarioDb[i] = dadosUsuario(nomePontuacao.value)
                 setLocalStorage(usuarioDb)
                 somaPontuacao(i)
                 atualizaTabela()
@@ -205,9 +205,9 @@ const excluir = (e) => {
 }
 
 
-const dadosUsuario = (nomeDaClass) => {
+const dadosUsuario = (nomeUsuario) => {
     const usuario = {}
-    usuario.nome = nomeDaClass.value
+    usuario.nome = nomeUsuario
     usuario.gol = Number(gol.value)
     usuario.assist = Number(assist.value)
     usuario.desarme = Number(desarme.value)
@@ -217,7 +217,7 @@ const dadosUsuario = (nomeDaClass) => {
 }
 
 function salvar() {
-    const usuario = dadosUsuario(nomeCadastro)
+    const usuario = dadosUsuario(nomeCadastro.value)
 
     if (usuario.nome != '') {
         registraUsuario(usuario)
@@ -237,8 +237,14 @@ const limpaTabela = () => {
 const atualizaTabela = () => {
     const usuarioDb = getLocalStorage()
     limpaTabela()
-    usuarioDb.forEach(criaLinha)
     textoDinamico()
+    usuarioDb.forEach(criaLinha)
+    usuarioDb.forEach(trocaCorBtnPontuacao)
+
+}
+
+const trocaCorBtnPontuacao = (usuario,index)=>{
+    if (usuario.total>0) {btnPontuacao[index].style.color="#3fd075"}
 }
 
 const textoDinamico = () => {
