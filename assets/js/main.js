@@ -28,7 +28,9 @@ const alerta = document.getElementById("alerta")
 
 const ranking = () => {
     const jogadoresOrdenados = getLocalStorage().sort((a, b) => b.total - a.total)
-    const totalMaiorQueZero = jogadoresOrdenados.filter(jogador => jogador.total > 0)
+    const jogadoresComPontuacao = jogadoresOrdenados.filter(jogador => jogador.total > 0)
+    const totalMaiorQueZero = jogadoresOrdenados.slice(0,3).every(jogador => jogador.total > 0)
+    
     if (jogadoresOrdenados.length >= 3 && totalMaiorQueZero) {
         nomePrimeiroColocado.innerText = jogadoresOrdenados[0].nome
         pontosPrimeiroColocado.innerText = jogadoresOrdenados[0].total
@@ -40,7 +42,7 @@ const ranking = () => {
         pontosTerceiroColocado.innerText = jogadoresOrdenados[2].total
 
         limpaTabela(corpoTabelaRanking)
-        totalMaiorQueZero.forEach(criaLinhaRanking)
+        jogadoresComPontuacao.forEach(criaLinhaRanking)
         trocaPagina(pagRanking, pagCadastro)
     } else {
         abreAlerta(`JOGOU AONDE?
