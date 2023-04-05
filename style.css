@@ -541,7 +541,15 @@ ion-icon {
     box-shadow: inset -2px -3px 2px -1px rgb(0 0 0/30%);
   }
 
-  #texto-pontuacao{
+
+  #corpoTabelaPontuacao{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #texto_pontuacao{
     height: 5vh;
     display: flex;
     align-items: center;

@@ -17,6 +17,7 @@ const pagCadastro = document.getElementById("conteudo_principal")
 const pagRanking = document.getElementById("conteudo_ranking")
 const pagPontuacao = document.getElementById("conteudo_pontuacao")
 const corpoTabelaRanking = document.getElementById('corpoTabelaRanking')
+const corpoTabelaPontuacao = document.getElementById('corpoTabelaPontuacao')
 
 const nomePrimeiroColocado = document.getElementById("nome_primeiro_colocado")
 const pontosPrimeiroColocado = document.getElementById("pontos_primeiro_colocado")
@@ -51,6 +52,21 @@ const ranking = () => {
     }
 }
 
+const pontuacao = ()=>{
+    const jogadores = getLocalStorage()
+    const totalMaiorQueZero = jogadores.some(jogador => jogador.total > 0)
+
+    if (jogadores && totalMaiorQueZero) {
+        limpaTabela(corpoTabelaPontuacao)
+        jogadores.forEach(criaLinhaPontuacao)
+        trocaPagina(pagPontuacao,pagCadastro,pagRanking)
+        
+    }else{
+            abreAlerta(`NEM JOGOU QUER MASSAGEM
+    Pontue com no mínimo 1 jogador`, "#e65555")
+        }
+
+}
 
 
 const abreAlerta = (mensagem, cor) => {
@@ -115,9 +131,49 @@ const criaLinhaRanking = (usuario, i) => {
             <span>pontos</span>
         </div>
     `
-
     corpoTabelaRanking.appendChild(novaLinha)
 }
+
+const criaLinhaPontuacao = (usuario, i) => {
+
+    const novaLinha = document.createElement('div')
+    novaLinha.setAttribute("class", "box-pontuacao")
+    novaLinha.innerHTML = `
+    <div class="nome-pontuacao">${usuario.nome}</div>
+    <div class="box-pts">
+        <span>
+            <div class="valor">${usuario.gol}</div>
+            <div class="titulo">GOLS</div>
+        </span>
+
+        <span>
+            <div class="valor">${usuario.assist}</div>
+            <div class="titulo">ASSIST</div>
+        </span>
+
+        <span>
+            <div class="valor">${usuario.desarme}</div>
+            <div class="titulo">DESARME</div>
+        </span>
+
+        <span>
+            <div class="valor">${usuario.defesa}</div>
+            <div class="titulo">DEFESA</div>
+        </span>
+
+    </div>
+
+    <div class="box-info">
+        <div class="box-total-pts">
+            <div class="total-pts">${usuario.total}</div>
+            <div class="titulo">Pts</div>
+        </div>
+        <div class="btn-editar" onclick="SelecionaJogador(${i})">EDITAR</div>
+    </div>
+    `
+    corpoTabelaPontuacao.appendChild(novaLinha)
+}
+
 
 
 const somaPontuacao = (index) => {
@@ -131,11 +187,8 @@ const somaPontuacao = (index) => {
 
     usuarioDb.forEach(
         (el, i) => {
-
             if (index == i) {
-
                 el.total = el.gol * valorPontos.gol + el.assist * valorPontos.assist + el.desarme * valorPontos.desarme + el.defesa * valorPontos.defesa
-
             }
         }
     )
@@ -236,7 +289,7 @@ const dadosUsuario = (nomeUsuario) => {
     usuario.assist = Number(assist.value)
     usuario.desarme = Number(desarme.value)
     usuario.defesa = Number(defesa.value)
-    usuario.total = ""
+    usuario.total = "0"
     return usuario
 }
 
@@ -261,8 +314,10 @@ const limpaTabela = (corpoTabela) => {
 const atualizaTabela = () => {
     const usuarioDb = getLocalStorage()
     limpaTabela(corpoTabelaCadastro)
+    limpaTabela(corpoTabelaPontuacao)
     textoDinamico()
     usuarioDb.forEach(criaLinha)
+    usuarioDb.forEach(criaLinhaPontuacao)
     usuarioDb.forEach(trocaCorBtnPontuacao)
 
 }

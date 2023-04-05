@@ -151,40 +151,6 @@
 
             <table>
                 <tbody id="corpoTabelaPontuacao">
-                    <div class="box-pontuacao">
-                        <div class="nome-pontuacao">jogador</div>
-                        <div class="box-pts">
-                            <span>
-                                <div class="valor">5</div>
-                                <div class="titulo">GOLS</div>
-                            </span>
-
-                            <span>
-                                <div class="valor">8</div>
-                                <div class="titulo">ASSIST</div>
-                            </span>
-
-                            <span>
-                                <div class="valor">10</div>
-                                <div class="titulo">DESARME</div>
-                            </span>
-
-                            <span>
-                                <div class="valor">20</div>
-                                <div class="titulo">DEFESA</div>
-                            </span>
-
-                        </div>
-
-                        <div class="box-info">
-                            <div class="box-total-pts">
-                                <div class="total-pts">52</div>
-                                <div class="titulo">Pts</div>
-                            </div>
-                            <div class="btn-editar">EDITAR</div>
-                        </div>
-
-                    </div>
                 </tbody>
             </table>
 
@@ -194,8 +160,8 @@
 
 
         <footer>
-            <div class="btn_footer" id="pontuacao">
-                <ion-icon name="clipboard-outline" onclick="trocaPagina(pagPontuacao,pagCadastro,pagRanking)"></ion-icon>
+            <div class="btn_footer" id="pontuacao" onclick="pontuacao()">
+                <ion-icon name="clipboard-outline"></ion-icon>
                 <div>Pontuação</div>
             </div>
             <div class="btn_footer" onclick="trocaPagina(pagCadastro,pagRanking,pagPontuacao)" id="cadastro">
