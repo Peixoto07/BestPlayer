@@ -72,12 +72,12 @@
             </span>
 
         </div>
-        
+
         <header class="center">
             <h2>BESTPLAYER</h2>
         </header>
-        <div id="alerta" ></div>
-        
+        <div id="alerta"></div>
+
         <section id="conteudo_principal">
             <span id="texto_dinamico">
                 <h3 id="texto"></h3>
@@ -85,76 +85,120 @@
                     <ion-icon name="person-add-outline"></ion-icon>
                 </div>
             </span>
-            
-                <table>
-                    <tbody id="corpoTabela">
 
-                    </tbody>
-                </table>
-    
-            </section>
-            
-            <section id="conteudo_ranking" style="display: none;">
-                <span id="texto_ranking">
-                    <h3 id="texto">MELHOR DA PARTIDA</h3>
+            <table>
+                <tbody id="corpoTabela">
+
+                </tbody>
+            </table>
+
+        </section>
+
+        <section id="conteudo_ranking" style="display: none;">
+            <span id="texto_ranking">
+                <h3 id="texto">MELHOR DA PARTIDA</h3>
+            </span>
+
+            <div id="podio">
+                <div class="card_podio" id="primeiro_colocado">
+                    <img src="assets/imagens/trofeu-ouro.svg" alt="">
+                    <div class="info_podio">
+                        <span>Melhor da partida</span>
+                        <div id="nome_primeiro_colocado">Jogador</div>
+                        <div id="pontos_primeiro_colocado">25</div>
+                        <span>Pontos</span>
+                    </div>
+                </div>
+
+                <span id="titulo_podio">
+                    <div>2º LUGAR</div>
+                    <div>3º LUGAR</div>
                 </span>
 
-                <div id="podio">
-                    <div class="card_podio" id="primeiro_colocado">
-                        <img src="assets/imagens/trofeu-ouro.svg" alt="">
-                        <div class="info_podio">
-                            <span>Melhor da partida</span>
-                            <div id="nome_primeiro_colocado">Jogador</div>
-                            <div id="pontos_primeiro_colocado">25</div>
+                <div id="segundoEterceiro_colocado">
+                    <div id="segundo_colocado" class="card_podio_segEterc">
+                        <img src="assets/imagens/trofeu-prata.svg" alt="">
+                        <div class="info_podio_segEterc">
+                            <div id="nome_segundo_colocado" class="nome_podio_segEterc">Jogador</div>
+                            <div id="pontos_segundo_colocado" class="pontos_podio_segEterc">15</div>
                             <span>Pontos</span>
                         </div>
                     </div>
-
-                    <span id="titulo_podio">
-                        <div>2º LUGAR</div>
-                        <div>3º LUGAR</div>
-                    </span>
-                    
-                    <div id="segundoEterceiro_colocado">
-                        <div id="segundo_colocado" class="card_podio_segEterc">
-                            <img src="assets/imagens/trofeu-prata.svg" alt="">
-                            <div class="info_podio_segEterc">
-                                <div id="nome_segundo_colocado" class="nome_podio_segEterc">Jogador</div>
-                                <div id="pontos_segundo_colocado" class="pontos_podio_segEterc">15</div>
-                                <span>Pontos</span>
-                            </div>
+                    <div id="terceiro_colocado" class="card_podio_segEterc">
+                        <img src="assets/imagens/trofeu-bronze.svg" alt="">
+                        <div class="info_podio_segEterc">
+                            <div id="nome_terceiro_colocado" class="nome_podio_segEterc">Jogador</div>
+                            <div id="pontos_terceiro_colocado" class="pontos_podio_segEterc">8</div>
+                            <span>Pontos</span>
                         </div>
-                        <div id="terceiro_colocado" class="card_podio_segEterc">
-                            <img src="assets/imagens/trofeu-bronze.svg" alt="">
-                            <div class="info_podio_segEterc">
-                                <div id="nome_terceiro_colocado" class="nome_podio_segEterc">Jogador</div>
-                                <div id="pontos_terceiro_colocado" class="pontos_podio_segEterc">8</div>
-                                <span>Pontos</span>
-                            </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <table>
+                <tbody id="corpoTabelaRanking">
+
+                </tbody>
+            </table>
+
+        </section>
+
+        <section id="conteudo_pontuacao" style="display: none;">
+            <span id="texto_pontuacao">
+                <h3>PONTUACAO</h3>
+            </span>
+
+            <table>
+                <tbody id="corpoTabelaPontuacao">
+                    <div class="box-pontuacao">
+                        <div class="nome-pontuacao">jogador</div>
+                        <div class="box-pts">
+                            <span>
+                                <div class="valor">5</div>
+                                <div class="titulo">GOLS</div>
+                            </span>
+
+                            <span>
+                                <div class="valor">8</div>
+                                <div class="titulo">ASSIST</div>
+                            </span>
+
+                            <span>
+                                <div class="valor">10</div>
+                                <div class="titulo">DESARME</div>
+                            </span>
+
+                            <span>
+                                <div class="valor">20</div>
+                                <div class="titulo">DEFESA</div>
+                            </span>
+
                         </div>
-                    </div>   
-                    
-                </div>    
 
-                <table>
-                    <tbody id="corpoTabelaRanking">
-                        
-                    </tbody>
-                </table>     
-                  
-            </section>
-        
+                        <div class="box-info">
+                            <div class="box-total-pts">
+                                <div class="total-pts">52</div>
+                                <div class="titulo">Pts</div>
+                            </div>
+                            <div class="btn-editar">EDITAR</div>
+                        </div>
 
+                    </div>
+                </tbody>
+            </table>
+
+        </section>
 
 
 
 
         <footer>
             <div class="btn_footer" id="pontuacao">
-                <ion-icon name="clipboard-outline"></ion-icon>
+                <ion-icon name="clipboard-outline" onclick="trocaPagina(pagPontuacao,pagCadastro,pagRanking)"></ion-icon>
                 <div>Pontuação</div>
             </div>
-            <div class="btn_footer" onclick="trocaPagina(pagCadastro,pagRanking)" id="cadastro">
+            <div class="btn_footer" onclick="trocaPagina(pagCadastro,pagRanking,pagPontuacao)" id="cadastro">
                 <ion-icon name="person-add-outline"></ion-icon>
                 <div>Cadastro</div>
             </div>

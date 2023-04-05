@@ -15,6 +15,7 @@ const defesa = document.getElementById('defesa')
 const btn = document.getElementsByClassName("btAtualizar")
 const pagCadastro = document.getElementById("conteudo_principal")
 const pagRanking = document.getElementById("conteudo_ranking")
+const pagPontuacao = document.getElementById("conteudo_pontuacao")
 const corpoTabelaRanking = document.getElementById('corpoTabelaRanking')
 
 const nomePrimeiroColocado = document.getElementById("nome_primeiro_colocado")
@@ -43,12 +44,14 @@ const ranking = () => {
 
         limpaTabela(corpoTabelaRanking)
         jogadoresComPontuacao.forEach(criaLinhaRanking)
-        trocaPagina(pagRanking, pagCadastro)
+        trocaPagina(pagRanking, pagCadastro,pagPontuacao)
     } else {
         abreAlerta(`JOGOU AONDE?
     Pontue com no mínimo 3 jogadores`, "#e65555")
     }
 }
+
+
 
 const abreAlerta = (mensagem, cor) => {
 
